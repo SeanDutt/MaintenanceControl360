@@ -1,0 +1,39 @@
+{% extends 'base.html' %} {% block content %}
+<div id="wrapper">
+  <nav class="nav-header">
+
+    <ul class="header-list">
+      <li>
+        <a href="/" class="header-item">Maintenance Control 360</p>
+      </li>
+      <li>
+        <a href="/" class="header-item">Home</a>
+      </li>
+      <li>
+        <a href="/projects" class="header-item">Gallery</a>
+      </li>
+      <li>
+        <a href="/testimonials" class="header-item">Testimonials</a>
+      </li>
+      <li>
+        <a href="/contact" class="active">Contact</a>
+      </li>
+    </ul>
+  </nav>
+  {% include 'messages.html' %}
+  <div class="contact-container">
+    <h1>Contact us for a quote.</h1>
+    <div id="contact-form">
+      <p>
+        Please fill out the form, and a description of the work you need done and we'll get back to you with a quote ASAP.
+      </p>
+      <form method="post">
+        {% csrf_token %}
+          {{form.as_p}}
+          <button type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+  {% include 'footer.html' %}
+</div>  
+{% endblock %}

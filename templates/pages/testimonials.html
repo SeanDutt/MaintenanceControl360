@@ -1,0 +1,58 @@
+{% extends 'base.html' %} {% block content %}
+<div id="wrapper">
+  <nav class="nav-header">
+
+    <ul class="header-list">
+      <li>
+        <a href="/" class="header-item">Maintenance Control 360</p>
+      </li>
+      <li>
+        <a href="/" class="header-item">Home</a>
+      </li>
+      <li>
+        <a href="/projects" class="header-item">Gallery</a>
+      </li>
+      <li>
+        <a href="/testimonials" class="active">Testimonials</a>
+      </li>
+      <li>
+        <a href="/contact" class="header-item">Contact</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="testimonials-container">
+    <div class="testimonials">
+    {% for comment in comments %}
+      <div class="testimonial">
+        <div class="testimonial-body">
+          <p>
+            {{comment.body | linebreaks}}
+          </p>
+          <img src="/media/icons8-quote.png"></i>
+        </div>
+        <div class="testimonial-footer">
+          <h3>
+            {{comment.name}}
+          </h3>
+          </p>
+          <span class="text-muted">
+            {{comment.created_on.date}}
+          </span>
+        </div>
+      </div>
+    {% endfor %}
+    </div>
+  </div>
+  <div class="footer">
+    <h1>
+      Appreciate our work? Leave a message!
+    </h1>
+    <form method="post">
+      {{ comment_form.as_p }}
+      {% csrf_token %}
+      <button type="submit" class="submit">Submit</button>
+    </form>
+  </div>
+  {% include 'footer.html' %}
+</div>  
+{% endblock %}

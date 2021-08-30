@@ -1,0 +1,37 @@
+{% extends 'base.html' %} {% block content %}
+<div id="wrapper">
+  <nav class="nav-header">
+
+    <ul class="header-list">
+      <li>
+        <a href="/" class="header-item">Maintenance Control 360</p>
+      </li>
+      <li>
+        <a href="/" class="header-item">Home</a>
+      </li>
+      <li>
+        <a href="/projects" class="active">Gallery</a>
+      </li>
+      <li>
+        <a href="/testimonials" class="header-item">Testimonials</a>
+      </li>
+      <li>
+        <a href="/contact" class="header-item">Contact</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="projects-container">
+    <div class="project-gallery">
+      {% for photo in galleries.all %}
+      <div class="project-card">
+        <a href="/projects/{{ photo.id }}">
+          <img src="{{photo.image.url}}" alt="Smiley face" width="300" height="300">
+          <p>{{photo.name}}</p>
+        </a>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% include 'footer.html' %}
+</div>
+{% endblock %}
